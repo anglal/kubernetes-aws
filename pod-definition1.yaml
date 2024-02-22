@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: mypod
+  labels:
+    app: my-test-app
+    tier: fullstack
+spec:
+  containers:
+  - name: testapp1
+    image: elexad/webapp-test:1.0

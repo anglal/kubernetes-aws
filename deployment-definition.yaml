@@ -1,0 +1,24 @@
+#It is same as replicaset just kind is different, see replicaset-definition.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-test-deployment
+  labels:
+    app: myapp
+    type: full-stack
+spec:
+  #Pod definition see replicaset-definition.yaml
+  template:
+    metadata: 
+      name: mypod
+      labels:
+        app: my-test-app
+        tier: fullstack
+    spec:
+      containers:
+      - name: testapp1
+        image: elexad/webapp-test:1.0
+  replicas: 3
+  selector:
+    matchLabels: #label of the pod must match
+      tier: fullstack
