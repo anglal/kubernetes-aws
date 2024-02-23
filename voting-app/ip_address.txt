@@ -1,0 +1,6 @@
+Result Service URL 
+minikube service result-service --url
+
+Voting Service URL
+minikube service voting-service --url
+
