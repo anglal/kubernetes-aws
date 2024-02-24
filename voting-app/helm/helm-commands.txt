@@ -1,0 +1,37 @@
+#Create helm chart
+helm create helloworld
+
+cd helloworld
+vi values.yaml
+
+#change type
+service:
+  type: NodePort
+  port: 80
+
+# Install helm chaart
+helm install hello-world-helm-chart-release helloworld 
+
+#List helm charts
+helm list -a
+
+#Uninstall helm chart
+helm uninstall hello-world-helm-chart-release
+
+#Update/upgrade helm
+helm upgrade hello-world-helm-chart-release helloworld
+
+# Rollback to previous version
+helm rollback hello-world-helm-chart-release 1
+
+# Debug and dry run
+helm install hello-world-helm-chart-release --debug --dry-run helloworld
+
+#See all templates
+helm template helloworld
+
+#Find errors
+helm lint helloworld
+
+
+
