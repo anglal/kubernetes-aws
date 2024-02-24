@@ -44,6 +44,6 @@ kubectl get services
 # 12. Get minikube ip/url
 minikube service first-helm-project-chart --url
 
-13. Access the application
+# 13. Access the application
 http://127.0.0.1:56736/war-test/
 

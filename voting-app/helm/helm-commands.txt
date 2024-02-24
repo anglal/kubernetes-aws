@@ -33,5 +33,14 @@ helm template helloworld
 #Find errors
 helm lint helloworld
 
+#Search helm repos
+helm search hub wordpress --max-col-width=0
 
+#List helm repos
+helm repo list
 
+#Add repo
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
+# Readme
+helm show readme bitnami/wordpress --version 15.2.13
