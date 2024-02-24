@@ -1,0 +1,49 @@
+# 1. Create helm chart 
+helm create first-helm-project
+
+# 2. Comment out chart version on Chart.yaml
+#appVersion: "1.16.0"
+
+# 3. Add dockerhub repository in values
+image:
+  repository: elexad/war-test:1.1
+
+# 4. Create/change service in values
+service:
+  #type: ClusterIP
+  type: NodePort
+
+# 5. Change containerPort to application port 8080 in Values
+service:
+  #type: ClusterIP
+  type: NodePort
+  port: 8080
+
+# 6. Comment out probes in deployment/ delete the lines below
+#livenessProbe:
+#{{- toYaml .Values.livenessProbe | nindent 12 }}
+#readinessProbe:
+#{{- toYaml .Values.readinessProbe | nindent 12 }}
+
+# 7. Adjust the tag on deployment
+#image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+image: "{{ .Values.image.repository }}"
+
+# 8. Install helm chart
+helm install first-helm-project-chart first-helm-project
+
+# 9. List helm charts 
+helm list -about
+
+# 10. Get deployments
+kubectl get deployments
+
+# 11. Get services
+kubectl get services
+
+# 12. Get minikube ip/url
+minikube service first-helm-project-chart --url
+
+13. Access the application
+http://127.0.0.1:56736/war-test/
+
